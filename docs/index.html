@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>CloneFunnel – vistas guardadas</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; background: #fafafa; }
+    h1 { color: #222; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 0.3rem 0; }
+    a { color: #0366d6; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    iframe { width: 100%; height: 80vh; border: 1px solid #ddd; margin-top: 1rem; }
+  </style>
+  <script>
+    async function loadList() {
+      const res = await fetch('.');
+      const text = await res.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(text, 'text/html');
+      const links = [...doc.querySelectorAll('a')].filter(a => a.href.endsWith('.html') && a.textContent !== 'index.html');
+      const list = document.getElementById('pages');
+      links.forEach(a => {
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = a.getAttribute('href');
+        link.textContent = a.getAttribute('href');
+        link.target = 'viewer';
+        li.appendChild(link);
+        list.appendChild(li);
+      });
+    }
+    window.onload = loadList;
+  </script>
+</head>
+<body>
+  <h1>Vistas guardadas</h1>
+  <ul id="pages"></ul>
+  <iframe name="viewer"></iframe>
+</body>
+</html>
