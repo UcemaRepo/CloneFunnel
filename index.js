@@ -26,7 +26,7 @@ if (!args.url) {
   process.exit(1);
 }
 
-const OUT_DIR = path.resolve(process.cwd(), args.out);
+const OUT_DIR = path.resolve(process.cwd(), 'docs');
 if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });
 
 const config = {
