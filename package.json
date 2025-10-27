@@ -1,0 +1,16 @@
+{
+  "name": "puppeteer-clone-view",
+  "version": "1.0.0",
+  "description": "Clone a rendered view of a web page (save MHTML/HTML/screenshot). Puppeteer script ready for GitHub.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "run": "node index.js"
+  },
+  "author": "tu-nombre",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "puppeteer": "^21.0.0"
+  }
+}
